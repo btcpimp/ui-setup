@@ -1,0 +1,30 @@
+version: '3'
+services:
+  web:
+    restart: always
+    build: https://github.com/golos-classic/ui.git
+    image: golos-classic-ui
+    command: yarn run start
+    ports:
+      - 127.0.0.1:8080:8080
+
+    depends_on:
+      - db
+
+    volumes:
+      - ${PWD}/config.json:/var/app/config/default.json
+      - ${PWD}/db.config.json:/var/app/db/config/config.json
+
+  db:
+    restart: always
+    image: mysql
+    environment:
+      MYSQL_DATABASE: 'golosdev'
+      MYSQL_USER: 'golosdev'
+      MYSQL_PASSWORD: 'golosdev'
+      MYSQL_ROOT_PASSWORD: 'golosdev'
+
+    command: --default-authentication-plugin=mysql_native_password
+
+    volumes:
+      - ./data/mysql:/var/lib/mysql
