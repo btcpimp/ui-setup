@@ -23,7 +23,7 @@ docker-compose run --rm web bash -c "cd db && sequelize db:migrate"
 docker-compose up -d
 ```
 
-Done! Access your instance at ```localhost:9000```
+Done! Access your instance at ```localhost:8080```
 
 ## TODO
 1. Fix some mysql errors.
