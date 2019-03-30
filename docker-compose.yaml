@@ -4,7 +4,7 @@ services:
     restart: always
     build: https://github.com/golos-classic/ui.git
     image: golos-classic-ui
-    command: yarn run start
+    command: yarn run production
     ports:
       - 127.0.0.1:8080:8080
 
